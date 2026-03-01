@@ -3,6 +3,9 @@
 #include <vector>
 using namespace std;
 
+// Note: ifstream and ofstream objects
+//       have to be passed in by ref in functions
+// DO NOT change this declaration!
 int FindNum(ifstream &ifs);
 
 int main(){
@@ -12,14 +15,16 @@ int main(){
     cin >> fname;
     ifs.open(fname);
 
-    int result = FindNum(ifs);
-    ifs.close();
+    // find the 2nd largest int and print it
+    cout << FindNum(ifs) << endl;
 
-    cout << "The 2nd largest value is: " << result << endl;
+    ifs.close();
     return 0;
 }
 
-
+// Pre-Condition:  ifs is an open ifstream pointing to a file containing
+//                 at least 2 integers separated by any whitespace.
+// Post-Condition: Returns the 2nd largest integer value found in the file.
 int FindNum(ifstream &ifs){
     vector<int> nums;
     int num;
@@ -37,13 +42,13 @@ int FindNum(ifstream &ifs){
     }
 
     for(int i = 2; i < (int)nums.size(); i++){
-        if (nums[i] > largest) {
+        if(nums[i] > largest){
             second  = largest;
             largest = nums[i];
         }else if(nums[i] > second){
             second = nums[i];
         }
-    } 
+    }
 
     return second;
-} 
+}
