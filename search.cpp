@@ -8,7 +8,7 @@ using namespace std;
 // DO NOT change this declaration!
 vector<int> SeqSearchAll(int target, ifstream &ifs);
 
-int main() {
+int main(){
     ifstream ifs;
     string fname;
     cout << "Enter filename: ";
@@ -22,15 +22,15 @@ int main() {
     vector<int> returned = SeqSearchAll(target, ifs);
     ifs.close();
 
-    if (returned[0] == -1)
+    if(returned[0] == -1)
         cout << "Target not found!\n";
-    else {
+    else{
         cout << "Target found at position(s): ";
-        for (int i = 0; i < (int)returned.size(); i++) {
+        for(int i = 0; i < (int)returned.size(); i++){
             cout << returned[i] << " ";
-        } // for
+        } 
         cout << endl;
-    } // else
+    }
 
     return 0;
 }
@@ -41,19 +41,19 @@ vector<int> SeqSearchAll(int target, ifstream &ifs) {
     vector<int> positions;
     int num;
 
-    // Read all integers from file into nums
-    while (ifs >> num)
+    //Read all integers from file into nums
+    while(ifs >> num)
         nums.push_back(num);
 
-    // Search nums for all occurrences of target
-    for (int i = 0; i < (int)nums.size(); i++) {
-        if (nums[i] == target)
+    //Search nums for all occurrences of target
+    for(int i = 0; i < (int)nums.size(); i++){
+        if(nums[i] == target)
             positions.push_back(i);
-    } // for
+    }
 
-    // If never found, signal with -1
-    if (positions.empty())
+    //If never found, signal with -1
+    if(positions.empty())
         positions.push_back(-1);
 
     return positions;
-} // SeqSearchAll
+} 

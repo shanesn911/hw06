@@ -5,7 +5,7 @@ using namespace std;
 
 int FindNum(ifstream &ifs);
 
-int main() {
+int main(){
     ifstream ifs;
     string fname;
     cout << "Enter filename: ";
@@ -20,30 +20,30 @@ int main() {
 }
 
 
-int FindNum(ifstream &ifs) {
+int FindNum(ifstream &ifs){
     vector<int> nums;
     int num;
 
-    while (ifs >> num)
+    while(ifs >> num)
         nums.push_back(num);
 
     int largest, second;
-    if (nums[0] >= nums[1]) {
+    if(nums[0] >= nums[1]){
         largest = nums[0];
         second  = nums[1];
-    } else {
+    }else{
         largest = nums[1];
         second  = nums[0];
     }
 
-    for (int i = 2; i < (int)nums.size(); i++) {
+    for(int i = 2; i < (int)nums.size(); i++){
         if (nums[i] > largest) {
             second  = largest;
             largest = nums[i];
-        } else if (nums[i] > second) {
+        }else if(nums[i] > second){
             second = nums[i];
         }
-    }
+    } 
 
     return second;
-}
+} 
